@@ -1,17 +1,22 @@
+import React from "react";
+import { useState } from "react";
 import Head from 'next/head'
 import { gql } from '@apollo/client';
-
 import { getApolloClient } from 'lib/apollo-client';
 import Header from "components/Header";
-import Allproducts from "./shop/Allproducts";
 import Banner from "components/Banner";
+import Allproducts from "components/Allproducts";
 
 
-export default function Home({ page, products }) {
+//context for data handlings
+
+//do not abused tags this will cause a hydration ISSUES for SSR eg a DIV inside a p tag jamais fer sa 
+export default function Home({ page, products,categories }) {
   const { title, description } = page;
-
+  
+  
   return (
-    <div >
+    <div className="overflow-x-hidden">
       <Head>
         <title>{title}</title>
         <meta name="description" content={description} />
@@ -19,8 +24,8 @@ export default function Home({ page, products }) {
       </Head>
 
       <main>
-        <Header/>
-        <Banner/>
+        <Header categorie={categories}/>
+        {/* <Banner/> */}
         <Allproducts products={products}/>
 
       </main>
@@ -38,6 +43,17 @@ export async function getStaticProps() {
           title
           description
         }
+        productCategories(where: {orderby: COUNT, order: DESC}) {
+          edges {
+            node {
+              name
+              slug
+              image{
+                sourceUrl
+              }
+            }
+          }
+        }
         products(first: 25) {
           edges {
             node {
@@ -49,8 +65,8 @@ export async function getStaticProps() {
               ... on SimpleProduct {
                 sku
                 onSale
-                regularPrice
-                salePrice
+                regularPrice(format: RAW)
+                salePrice(format: RAW)
                 price(format: RAW)
               }
 
@@ -68,14 +84,22 @@ export async function getStaticProps() {
     }
   });
 
+  const categories = data?.data.productCategories.edges.map(({ node }) => node).map(cat => {
+    return {
+      ...cat,
+      path: `/categories/${cat.slug}`
+    }
+  });
+
   const page = {
     ...data?.data.generalSettings
   }
-
+  
   return {
     props: {
       page,
-      products
+      categories,
+      products,   
     }
   }
 }

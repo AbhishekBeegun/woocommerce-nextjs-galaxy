@@ -1,14 +1,27 @@
 import React from 'react'
+import Link from "next/link"
 import FixNav from "./FixNav"
-import Navbar from "./Navbar/Navbar"
+import Sidebar from "./Sidebar"
+import Cart from "./Navbar/Cart"
 
 
-const Header = () => {
+const Header = ({categorie}) => {
   return (
-    <div className="py-4">    
-    <div className="flex items-center justify-around p-4">
+    <div className="py-4 w-[100vw]">    
+    <div className="flex items-center justify-evenly py-4">
+    
+    <Sidebar categorie={categorie}/>
+
+
+    <Link href="/" className="z-10">
+      <a>
       <img src="http://localhost/galaxy/wp-content/uploads/2023/02/Galaxy_Logo-01.png" width="150px" alt="Galaxy logo" /> 
-      <Navbar/>
+      </a>
+      </Link>
+
+      <div className="flex items-center gap-2">
+      <Cart/> 
+      </div>
     </div>
     <FixNav/>
     </div>

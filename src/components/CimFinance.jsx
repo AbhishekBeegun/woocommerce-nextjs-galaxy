@@ -13,9 +13,10 @@ const CimFinance = ({price}) => {
   
 
   return (
-    <div style={{display:"flex"}}>
-        <div>Rs {cimprice}</div>
-        <select value={selected} 
+    <div className="flex justify-center items-center gap-2">
+        <p className="font-semibold text-red-600">Rs {cimprice} x</p>
+        <select className="bg-gray-50 border rounded-lg text-red-600 p-1" 
+        value={selected} 
         onChange = {e => setselected(e.target.value)}>
           <option>6</option>
           <option>12</option>
@@ -24,6 +25,7 @@ const CimFinance = ({price}) => {
           <option>36</option>
           <option>48</option>
         </select>
+      <p className="text-red-600">Months *</p>
     </div>
   )
 }

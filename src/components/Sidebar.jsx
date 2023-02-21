@@ -22,21 +22,22 @@ const Sidebar = ({categorie}) => {
     ease-in-out duration-200 overflow-scroll
     }`}>
       <div className="flex gap-2">
-      <button className="" onClick={handleClick}>
+      <button className="flex justify-center items-center py-4" onClick={handleClick}>
       <IoClose size={25}/>
+      <h2 className="flex items-center justify-center text-base text-red-600 font-semibold w-[220px]">Recent Categories</h2>
       </button>
       </div>
       <div className="flex flex-wrap justify-evenly items-center gap-2 pb-4">
-       <h2 className="flex items-center justify-center text-base text-red-600 font-semibold w-[220px] h-[100px]">Recent Categories</h2>
       {categorie && categorie.map(link => (
-       <button onClick={handleClick}
-        className="flex items-center justify-evenly border p-2 w-full h-[150px] bg-white rounded-lg shadow">
+       
         <Link href={`/categories/${link.name}`} key={link.slug}>
-          {/* <img src={link.image.sourceUrl} alt="" className="rounded-lg" width="75px"/> */}
+        <button onClick={handleClick} className="flex items-center justify-evenly border p-2 w-full h-[150px] bg-white rounded-lg shadow">
+          {/* <img src={link.image.sourceUrl} alt="link.name" className="rounded-lg" width="75px"/> */}
           <p className="text-sm uppercase font-semibold">{link.name}</p>
+        </button>
         </Link>
 
-        </button>
+        
       ))}
       </div>
 

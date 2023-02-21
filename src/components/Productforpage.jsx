@@ -5,7 +5,7 @@ import Saveonsale from "./Saveonsale";
 
 const Productforpage = ({products}) => {
   return (
-    <div>
+    <div className="">
         <main className="">
         <ul className="flex flex-wrap justify-center items-center gap-5">
           {products && products.length > 0 && products.map(product => {
@@ -24,10 +24,10 @@ const Productforpage = ({products}) => {
                 {product.onSale ? 
                 <div className="flex items-baseline gap-2">
                   <p className="line-through text-sm">Rs {product.regularPrice}</p>
-                  <p className="text-xl font-semibold text-[#303030]">Rs {product.salePrice}</p>
+                  <p className="text-lg font-semibold text-[#303030]">Rs {product.salePrice}</p>
                 </div> :
                  <div>
-                  <p className="text-xl font-semibold text-[#303030]">Rs {product.regularPrice}</p>
+                  <p className="text-lg font-semibold text-[#303030]">Rs {product.regularPrice}</p>
                 </div>}
 
               </div>

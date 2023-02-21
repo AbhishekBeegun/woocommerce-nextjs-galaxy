@@ -1,18 +1,22 @@
 import React from "react";
-import { useState } from "react";
 import Head from 'next/head'
 import { gql } from '@apollo/client';
 import { getApolloClient } from 'lib/apollo-client';
 import Header from "components/Header";
 import Banner from "components/Banner";
 import Allproducts from "components/Allproducts";
+import CookieConsent, { Cookies, getCookieConsentValue } from "react-cookie-consent";
 
 
 //context for data handlings
-
+/// local storage kav swervi for ALl products to pass to sibling page mais li pa pu render on server slmn 
 //do not abused tags this will cause a hydration ISSUES for SSR eg a DIV inside a p tag jamais fer sa 
 export default function Home({ page, products,categories }) {
   const { title, description } = page;
+
+  console.log(getCookieConsentValue(Cookies));
+  //console.log(resetCookieConsentValue()); import it first to reset cookiesss
+  
   
   
   return (
@@ -23,11 +27,21 @@ export default function Home({ page, products,categories }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
+      <main className="">
         <Header categorie={categories}/>
         {/* <Banner/> */}
         <Allproducts products={products}/>
-
+        <CookieConsent
+        buttonText="Give Cookies"
+        style={{
+          backgroundColor : "red",
+          fontWeight :"600"
+        }}
+        buttonStyle={{color : "red",
+        backgroundColor:"white",
+        fontWeight :"600",
+        borderRadius : "2px"}}
+        >We need your data !</CookieConsent>
       </main>
     </div>
   )
@@ -84,6 +98,7 @@ export async function getStaticProps() {
     }
   });
 
+
   const categories = data?.data.productCategories.edges.map(({ node }) => node).map(cat => {
     return {
       ...cat,
@@ -99,7 +114,8 @@ export async function getStaticProps() {
     props: {
       page,
       categories,
-      products,   
+      products
+   
     }
   }
 }

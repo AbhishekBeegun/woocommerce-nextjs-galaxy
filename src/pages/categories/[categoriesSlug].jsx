@@ -13,6 +13,7 @@ const categories = ({products,categories}) => {
         <main className="pb-[10vh]">
         <Productforpage products={products}/>
         </main>
+        <Footer/>
     </div>
   )
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import Link from "next/link"
 import FixNav from "./FixNav"
 import Sidebar from "./Sidebar"
-import Cart from "./Navbar/Cart"
+import Cart from "./Cart/Cart"
 
 
 const Header = ({categorie}) => {

@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from "next/link";
 import {AiOutlineArrowLeft} from "react-icons/ai";
-import Cart from "./Cart";
+import Cart from "../Cart/Cart";
 import { useRouter } from 'next/router'
 
 

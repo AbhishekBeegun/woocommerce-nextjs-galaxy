@@ -6,6 +6,7 @@ import Header from "components/Header";
 import Banner from "components/Banner";
 import Allproducts from "components/Allproducts";
 import CookieConsent, { Cookies, getCookieConsentValue } from "react-cookie-consent";
+import Footer from "components/Footer";
 
 
 //context for data handlings
@@ -14,7 +15,7 @@ import CookieConsent, { Cookies, getCookieConsentValue } from "react-cookie-cons
 export default function Home({ page, products,categories }) {
   const { title, description } = page;
 
-  console.log(getCookieConsentValue(Cookies));
+  // console.log(getCookieConsentValue(Cookies));
   //console.log(resetCookieConsentValue()); import it first to reset cookiesss
   
   
@@ -28,8 +29,10 @@ export default function Home({ page, products,categories }) {
       </Head>
 
       <main className="">
+        
         <Header categorie={categories}/>
         {/* <Banner/> */}
+        
         <Allproducts products={products}/>
         <CookieConsent
         buttonText="Give Cookies"
@@ -40,9 +43,10 @@ export default function Home({ page, products,categories }) {
         buttonStyle={{color : "red",
         backgroundColor:"white",
         fontWeight :"600",
-        borderRadius : "2px"}}
+        borderRadius : "10px"}}
         >We need your data !</CookieConsent>
       </main>
+      <Footer/>
     </div>
   )
 }

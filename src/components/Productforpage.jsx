@@ -2,6 +2,7 @@ import React from 'react'
 import Link from "next/link";
 import CimFinance from "./CimFinance";
 import Saveonsale from "./Saveonsale";
+import Addtocartbtn from "./Cart/Addtocartbtn";
 
 const Productforpage = ({products}) => {
   return (
@@ -37,6 +38,9 @@ const Productforpage = ({products}) => {
 
                 </div>
 
+                
+                         
+
 
 
                 <div>
@@ -45,9 +49,11 @@ const Productforpage = ({products}) => {
                   <Saveonsale regularPrice={product.regularPrice} salePrice={product.salePrice}/>
                   </div> : 
                  <div className="hidden"></div>}
-                </div>
-                
+                </div>   
               </div>
+
+              
+
             );
           })}
 

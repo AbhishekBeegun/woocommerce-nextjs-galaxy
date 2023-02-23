@@ -8,6 +8,7 @@ import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import {BiHide}from "react-icons/bi"
 import {BsArrowUpShort} from "react-icons/bs"
 import { useState } from "react";
+import Addtocartbtn from "components/Cart/Addtocartbtn";
 
 
 export default function Products({ products, site }) {
@@ -94,7 +95,9 @@ export default function Products({ products, site }) {
                 </>}
             </div>
           </div>
-          <button className="border rounded-lg border-red-600 w-28 h-10 text-xs bg-red-600 text-white">ADD TO CART</button>
+
+          <Addtocartbtn products={products}/>
+          {/* <button className="border rounded-lg border-red-600 w-28 h-10 text-xs bg-red-600 text-white">ADD TO CART</button> */}
           </div>
         </div>
         </div>

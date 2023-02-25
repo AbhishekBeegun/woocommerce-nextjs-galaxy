@@ -9,7 +9,9 @@ import CookieConsent, { Cookies, getCookieConsentValue } from "react-cookie-cons
 import Footer from "components/Footer";
 
 
+
 //context for data handlings
+
 /// local storage kav swervi for ALl products to pass to sibling page mais li pa pu render on server slmn 
 //do not abused tags this will cause a hydration ISSUES for SSR eg a DIV inside a p tag jamais fer sa 
 export default function Home({ page, products,categories }) {
@@ -21,6 +23,7 @@ export default function Home({ page, products,categories }) {
   
   
   return (
+    
     <div className="overflow-x-hidden">
       <Head>
         <title>{title}</title>
@@ -28,23 +31,30 @@ export default function Home({ page, products,categories }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+
+
+      <Header categorie={categories} products={products}/>
       <main className="">
         
-        <Header categorie={categories}/>
         {/* <Banner/> */}
         
         <Allproducts products={products}/>
         <CookieConsent
-        buttonText="Give Cookies"
+        buttonText="Agree"
         style={{
+          fontSize:"1.2rem",
           backgroundColor : "red",
           fontWeight :"600"
         }}
-        buttonStyle={{color : "red",
-        backgroundColor:"white",
-        fontWeight :"600",
-        borderRadius : "10px"}}
-        >We need your data !</CookieConsent>
+        buttonStyle={{ color: "red",background:"white",borderRadius:"5px", fontSize: "13px" }}
+        
+        enableDeclineButton
+        declineButtonText="Refuse"
+        declineButtonStyle={{ color: "red",background:"white",borderRadius:"5px", fontSize: "13px" }}
+        onDecline={() => {
+          alert("We understand");
+        }}
+        >We are taking your 🍪</CookieConsent>
       </main>
       <Footer/>
     </div>

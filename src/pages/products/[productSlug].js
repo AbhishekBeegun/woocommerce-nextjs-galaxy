@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import React from "react";
+import React, { createContext, useContext, useEffect } from "react";
 import { gql } from '@apollo/client';
 import { getApolloClient } from 'lib/apollo-client';
 import CimFinance from "components/CimFinance";
@@ -8,29 +8,54 @@ import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import {BiHide}from "react-icons/bi"
 import {BsArrowUpShort} from "react-icons/bs"
 import { useState } from "react";
-import Addtocartbtn from "components/Cart/Addtocartbtn";
+import { Toaster,toast } from "react-hot-toast";
 
+export const CartContext = createContext();
 
 export default function Products({ products, site }) {
+    
+  const [Isopen, setIsopen] = useState(false);
+  const [Addtowishlist, setAddtowishlist] = useState(false);
+  const [Cartdata,setCartdata] = useState([]);
   
-  const [Isopen, setIsopen] = useState(true);
-  const [wishlist, setwishlist] = useState(false);
+  
+  useEffect(() => {
+    const newCartData = JSON.parse(localStorage.getItem("cart-data"))
+    if (newCartData)
+        setCartdata(newCartData)
+}, [])
+
+///check if there is data in localstorage then load localstorage with required data
+  useEffect(() => {
+    localStorage.setItem("cart-data", JSON.stringify(Cartdata))
+    console.log("data saved")
+    console.log(Cartdata)
+}, [Cartdata])
+
+  function Addtocart(product){
+   setCartdata([...Cartdata,product])
+   setIsopen(!Isopen)
+   toast.success("Added to Cart")
+  }
+
+
 
   return (
     <>
+    <Toaster/>
       <Head>
         <title>{ products.title }</title>
         <meta name="description" content={`Read more about ${products.title} on ${site.title}`} />
         <link rel="icon" href="/favicon.ico" />
-      </Head>
+      </Head>    
 
-      
-
-      <main>  
+      <main> 
+        <CartContext.Provider value={Cartdata}>   
         <NavSingle/>     
+        </CartContext.Provider>
+   
         {products.map(product => 
-        <div className="flex flex-col lg:flex-row justify-center lg:gap-10">
-        
+        <div key={product.id} className="flex flex-col lg:flex-row justify-center lg:gap-10">
         {/* image */}
         <div className="flex items-center justify-center">
         <img className="h-[40vh] w-fit border"
@@ -43,21 +68,21 @@ export default function Products({ products, site }) {
 
          {/* fixed bottom  */}
 
-        <div className={`fixed bottom-0 left-0 w-full h-[60vh] border-t border-red-300 rounded-t-2xl bg-white flex flex-col justify-evenly
+        <div className={`fixed z-10 bottom-0 left-0 w-full h-[60vh] border-t border-red-300 rounded-t-2xl bg-white flex flex-col justify-evenly
            ${Isopen ? 'translate-y-0':'translate-y-[40vh]'} ease-in-out duration-300`}>
            {/* scroll to hide  */}
           <div className="flex justify-center">
           <button className="p-2 rounded-lg bg-white text-red-600" 
           onClick={() => setIsopen(!Isopen)}>  
-          {Isopen ? <BiHide size={25}/> : <BsArrowUpShort size={25}/>}         
+          {Isopen ? <BiHide size={25}/> : <BsArrowUpShort size={25} className="animate-bounce"/>}         
           </button>
           </div>
            {/* title and wishlist  */}
           <div className="flex justify-evenly items-center px-2">
            <h1 className="font-semibold text-xl shrink">{product.title}</h1>
-           <button onClick={() => setwishlist(!wishlist)} 
+           <button 
            className="text-red-600">
-            {!wishlist ? <AiOutlineHeart size={25}/> : <AiFillHeart size={28}/> }
+            {!Addtowishlist ? <AiOutlineHeart size={25}/> : <AiFillHeart size={28}/> }
              
           </button>
           </div>
@@ -96,8 +121,10 @@ export default function Products({ products, site }) {
             </div>
           </div>
 
-          <Addtocartbtn products={products}/>
-          {/* <button className="border rounded-lg border-red-600 w-28 h-10 text-xs bg-red-600 text-white">ADD TO CART</button> */}
+          <button onClick={() => Addtocart(product.title)}
+          className="border rounded-lg border-red-600 w-28 h-10 text-xs bg-red-600 text-white">
+            ADD TO CART
+          </button>
           </div>
         </div>
         </div>

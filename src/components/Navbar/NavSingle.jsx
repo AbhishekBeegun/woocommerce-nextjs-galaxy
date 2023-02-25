@@ -1,8 +1,7 @@
 import React from 'react'
-import Link from "next/link";
 import {AiOutlineArrowLeft} from "react-icons/ai";
-import Cart from "../Cart/Cart";
 import { useRouter } from 'next/router'
+import Cart from "components/Cart/Cart";
 
 
 const NavSingle = () => {
@@ -13,8 +12,9 @@ const NavSingle = () => {
       onClick={() => router.back()}>
         <AiOutlineArrowLeft size={25}/>
       </button>
+      
       <div className="p-2 rounded-lg bg-white">
-        <Cart/>
+      <Cart/>
       </div>
     </div>
   )

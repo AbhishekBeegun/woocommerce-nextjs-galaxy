@@ -1,13 +1,13 @@
 import React from 'react'
 import { gql } from '@apollo/client';
 import { getApolloClient } from 'lib/apollo-client';
-import Header from "components/Header";
+import Navbar from "components/Navbar";
 import Productforpage from "components/productforpage";
 
 const DEALS = ({products}) => {
   return (
     <div>
-    <Header/>
+    <Navbar/>
     <h1 className="text-3xl p-10 text-red-600">HOT DEALS</h1>
     <div>
       <Productforpage products={products}/>

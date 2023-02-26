@@ -2,7 +2,7 @@ import React from "react";
 import Head from 'next/head'
 import { gql } from '@apollo/client';
 import { getApolloClient } from 'lib/apollo-client';
-import Header from "components/Header";
+import Navbar from "components/Navbar";
 import Banner from "components/Banner";
 import Allproducts from "components/Allproducts";
 import CookieConsent, { Cookies, getCookieConsentValue } from "react-cookie-consent";
@@ -33,7 +33,7 @@ export default function Home({ page, products,categories }) {
 
 
 
-      <Header categorie={categories} products={products}/>
+      <Navbar categorie={categories} products={products}/>
       <main className="">
         
         {/* <Banner/> */}
@@ -71,7 +71,7 @@ export async function getStaticProps() {
           title
           description
         }
-        productCategories(where: {orderby: COUNT, order: DESC}) {
+        productCategories(first : 25 , where: {orderby: COUNT, order: DESC}) {
           edges {
             node {
               name

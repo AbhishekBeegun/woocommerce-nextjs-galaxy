@@ -1,7 +1,7 @@
 import React from 'react'
 import { gql } from '@apollo/client';
 import { getApolloClient } from 'lib/apollo-client';
-import Header from "components/Header";
+import Header from "components/Navbar";
 import Productforpage from "components/Productforpage";
 import Footer from "components/Footer";
 

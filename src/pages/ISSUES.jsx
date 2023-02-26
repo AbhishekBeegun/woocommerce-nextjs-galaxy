@@ -1,10 +1,10 @@
-import Header from "components/Header"
+import Navbar from "components/Navbar"
 import React from 'react'
 
 const ISSUES = () => {
   return (
     <div>
-        <Header/>
+        <Navbar/>
         <h1 className="text-3xl p-10 text-red-600">ISSUES TO FIX </h1>
 
         <div className="flex flex-wrap p-2 justify-center gap-5">

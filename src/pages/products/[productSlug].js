@@ -14,7 +14,7 @@ export const CartContext = createContext();
 
 export default function Products({ products, site }) {
     
-  const [Isopen, setIsopen] = useState(false);
+  const [Isopen, setIsopen] = useState(true);
   const [Addtowishlist, setAddtowishlist] = useState(false);
   const [Cartdata,setCartdata] = useState([]);
   
@@ -32,8 +32,8 @@ export default function Products({ products, site }) {
     console.log(Cartdata)
 }, [Cartdata])
 
-  function Addtocart(product){
-   setCartdata([...Cartdata,product])
+  const Addtocart = (product) => {
+   setCartdata([...Cartdata,[product.title,product.price,product.image.sourceUrl,product.id]]);
    setIsopen(!Isopen)
    toast.success("Added to Cart")
   }
@@ -121,7 +121,7 @@ export default function Products({ products, site }) {
             </div>
           </div>
 
-          <button onClick={() => Addtocart(product.title)}
+          <button onClick={() => Addtocart(product)}
           className="border rounded-lg border-red-600 w-28 h-10 text-xs bg-red-600 text-white">
             ADD TO CART
           </button>

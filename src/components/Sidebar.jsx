@@ -1,13 +1,13 @@
 import React from 'react'
 import Link from "next/link";
 import { useState } from "react";
-import {BsGrid} from "react-icons/bs";
+import {CgMenuRight} from "react-icons/cg"
 import{IoClose} from "react-icons/io5";
 
 
 
 
-const Sidebar = ({categorie}) => {
+const Sidebar = () => {
 
   
   const [IsOpen, setIsOpen] = useState(false)
@@ -17,31 +17,51 @@ const Sidebar = ({categorie}) => {
   }
 
 
-
   return (
     <>
-    {IsOpen ? <IoClose size={25} onClick={() => handleSideClick()}/> : <BsGrid size={25} onClick={() => handleSideClick()}/>}
-    <div className={`top-0 flex flex-col z-10 right-0 fixed bg-slate-100 w-screen h-screen p-10 ${IsOpen ? '-translate-x-1':'-translate-x-full'}
-    ease-in-out duration-200 overflow-scroll
+    {IsOpen ? <IoClose size={25} onClick={() => handleSideClick()}/> : <CgMenuRight size={25} onClick={() => handleSideClick()}/>}
+    <div className={`top-0 flex flex-col z-10 right-0 fixed bg-white w-screen h-screen p-10 ${IsOpen ? 'translate-y':'-translate-y-full'}
+    ease-in-out duration-200 overflow-hidden
     }`}>
-      <div className="flex gap-2">
-      <button className="flex justify-center items-center py-4" onClick={() => handleSideClick()}>
-      <IoClose size={25}/>
-      <h2 className="flex items-center justify-center text-base text-red-600 font-semibold w-[220px]">Recent Categories</h2>
-      </button>
-      </div>
-      <div className="flex flex-wrap justify-evenly items-center gap-2 pb-4">
-      {categorie && categorie.map(link => (
-       
-        <Link href={`/categories/${link.name}`} key={link.slug}>
-        <button onClick={() => handleSideClick()} className="flex items-center justify-evenly border p-2 w-full h-[150px] bg-white rounded-lg shadow">
-          {/* <img src={link.image.sourceUrl} alt="link.name" className="rounded-lg" width="75px"/> */}
-          <p className="text-sm uppercase font-semibold">{link.name}</p>
-        </button>
+      <div className="flex flex-col items-center h-full">
+        <div className="flex justify-between items-center px-4 h-[100px] w-full">
+        <Link href="/" className="z-10">
+         <a>
+         <img src="http://localhost/galaxy/wp-content/uploads/2023/02/Galaxy_Logo-01.png" width="100px" alt="Galaxy logo" /> 
+         </a>
         </Link>
 
+        <button onClick={() => handleSideClick()}>
+        <IoClose size={25} />
+        </button>
+        </div>
+
+        <div className="flex flex-col w-full gap-10 text-sm uppercase py-4 text-red-600">
+          <Link href="/DEALS">
+            <a className="border-b py-2 px-4">Hot Deals</a>
+          </Link>
+          <Link href="/Wishlist">
+            <a className="border-b py-2 px-4">Wishlist</a>
+          </Link>
+          <Link href="/ISSUES">
+            <a className="border-b py-2 px-4">Issues</a>
+          </Link>
+          <Link href="/Account">
+            <a className="border-b py-2 px-4">Account</a>
+          </Link>
+          <Link href="/Other">
+            <a className="border-b py-2 px-4">Others</a>
+          </Link>
+          
+        </div>
+
+        <div className="bg-slate-100 flex justify-center items-center w-10/12 h-14 rounded-lg ">
+          <p>Appearance</p>
+          <button className="bg-red-200">
+            Toggle theme
+          </button>
+        </div>
         
-      ))}
       </div>
 
     </div>

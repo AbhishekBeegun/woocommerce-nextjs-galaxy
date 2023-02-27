@@ -8,7 +8,7 @@ const Search = () => {
   return (
 <>
      {Searchform ? <></>  : <IoSearch size={25} onClick={() => setSearchform(!Searchform)}/>}
-      <div className={`top-0 right-0 z-10 rounded-lg fixed bg-white w-[100vw] h-[100vh] p-5 ${Searchform ? 'translate-y-1':'translate-y-full'}
+      <div className={`top-0 right-0 z-10 rounded-lg fixed bg-secondary w-[100vw] h-[100vh] p-5 ${Searchform ? 'translate-y-1':'translate-y-full'}
        ease-in-out duration-300
        }`}>
         <div className="flex flex-col gap-5">
@@ -21,7 +21,7 @@ const Search = () => {
 
       </div>
 {/* <form className="">
-    <div className="flex border border-red-600 ">
+    <div className="flex border border-primary ">
       <>
       <select className="w-14">
         <option>All</option>

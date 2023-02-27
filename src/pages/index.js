@@ -1,5 +1,6 @@
 import React from "react";
 import Head from 'next/head'
+import { useEffect } from "react";
 import { gql } from '@apollo/client';
 import { getApolloClient } from 'lib/apollo-client';
 import Navbar from "components/Navbar";
@@ -9,22 +10,24 @@ import CookieConsent, { Cookies, getCookieConsentValue } from "react-cookie-cons
 import Footer from "components/Footer";
 
 
-
 //context for data handlings
 
 /// local storage kav swervi for ALl products to pass to sibling page mais li pa pu render on server slmn 
 //do not abused tags this will cause a hydration ISSUES for SSR eg a DIV inside a p tag jamais fer sa 
 export default function Home({ page, products,categories }) {
   const { title, description } = page;
+  
 
   // console.log(getCookieConsentValue(Cookies));
   //console.log(resetCookieConsentValue()); import it first to reset cookiesss
   
-  
+
+
   
   return (
     
-    <div className="overflow-x-hidden">
+
+    <main className="overflow-x-hidden">
       <Head>
         <title>{title}</title>
         <meta name="description" content={description} />
@@ -34,30 +37,32 @@ export default function Home({ page, products,categories }) {
 
 
       <Navbar categorie={categories} products={products}/>
-      <main className="">
+      <div>
         
-        {/* <Banner/> */}
-        
+        <Banner/>
+    
         <Allproducts products={products}/>
         <CookieConsent
         buttonText="Agree"
         style={{
           fontSize:"1.2rem",
-          backgroundColor : "red",
+          backgroundColor : "primary",
           fontWeight :"600"
         }}
-        buttonStyle={{ color: "red",background:"white",borderRadius:"5px", fontSize: "13px" }}
+        buttonStyle={{ color: "primary",background:"secondary",borderRadius:"5px", fontSize: "13px" }}
         
         enableDeclineButton
         declineButtonText="Refuse"
-        declineButtonStyle={{ color: "red",background:"white",borderRadius:"5px", fontSize: "13px" }}
+        declineButtonStyle={{ color: "primary",background:"secondary",borderRadius:"5px", fontSize: "13px" }}
         onDecline={() => {
           alert("We understand");
         }}
         >We are taking your 🍪</CookieConsent>
-      </main>
+      </div>
       <Footer/>
-    </div>
+      
+    </main>
+
   )
 }
 
@@ -76,7 +81,7 @@ export async function getStaticProps() {
             node {
               name
               slug
-              image{
+              image {
                 sourceUrl
               }
             }

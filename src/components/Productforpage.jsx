@@ -2,6 +2,7 @@ import React from 'react'
 import Link from "next/link";
 import CimFinance from "./CimFinance";
 import Saveonsale from "./Saveonsale";
+import Image from "next/image";
 
 const Productforpage = ({products}) => {
   return (
@@ -13,7 +14,7 @@ const Productforpage = ({products}) => {
               <div key={product.slug} className="relative w-[250px]" >
                 <Link href={product.path}>
                   <a className="flex flex-col">
-                  <img src={product.image.sourceUrl} alt="" width="250px" className="border hover:scale-110 transition-all ease-in-out rounded-lg"/>
+                  <img src={product.image.sourceUrl} loading="lazy" alt="Productimg" width="250" height="250" className="border hover:scale-110 transition-all ease-in-out rounded-lg"/>
                     <h3 dangerouslySetInnerHTML={{
                       __html: product.title
                     }} className="text-base font-semibold py-4 shrink" />

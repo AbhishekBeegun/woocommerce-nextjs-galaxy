@@ -8,7 +8,7 @@ const DEALS = ({products}) => {
   return (
     <div>
     <Navbar/>
-    <h1 className="text-3xl p-10 text-red-600">HOT DEALS</h1>
+    <h1 className="text-3xl p-10 text-primary">HOT DEALS</h1>
     <div>
       <Productforpage products={products}/>
     </div>

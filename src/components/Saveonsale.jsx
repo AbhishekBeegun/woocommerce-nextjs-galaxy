@@ -11,7 +11,7 @@ const Saveonsale = ({regularPrice,salePrice}) => {
 
 
   return (
-    <div className="font-base bg-red-500 text-sm text-white border-red-600 border rounded-tl-lg rounded-bl-lg p-1">
+    <div className="font-base bg-primary text-sm text-secondary border-primary border rounded-tl-lg rounded-bl-lg p-1">
       <p>Save Rs {save} | {offby}% Off</p>
     </div>
  

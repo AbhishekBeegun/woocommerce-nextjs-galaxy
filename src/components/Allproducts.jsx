@@ -5,8 +5,7 @@ import Productforpage from "./Productforpage";
 
 const Allproducts = ({products}) => {
   return (
-    <div className="lg:px-44">
-      <p>ALL PRODUCTS</p>
+    <div className="lg:px-44 py-4">
       <Productforpage products={products}/>
     </div>
   )

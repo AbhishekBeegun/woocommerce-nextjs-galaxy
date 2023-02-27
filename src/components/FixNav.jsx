@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import {CgMenuLeftAlt} from "react-icons/cg"
 import{IoClose} from "react-icons/io5";
+import{AiOutlineUser} from "react-icons/ai"
 
 
 
@@ -17,7 +18,7 @@ const FixNav = ({categorie}) => {
 
 
   return (
-    <nav className="w-full flex justify-between items-center py-2 px-8 bg-white border">
+    <nav className="w-full flex justify-between items-center py-2 px-8 bg-secondary border-y">
        {IsOpen ? 
        <button onClick={() => handlenavClick()}>
        <IoClose size={20} />
@@ -29,15 +30,15 @@ const FixNav = ({categorie}) => {
         Categories
        </button>
 
-       <p>User</p>
+       <button className="flex gap-1 items-center"><AiOutlineUser/> User</button>
        </div>}
-    <div className={`top-0 flex flex-col z-10 right-0 fixed bg-white w-screen h-screen p-8 ${IsOpen ? '-translate-x-1':'-translate-x-full'}
+    <div className={`top-0 flex flex-col z-10 right-0 fixed bg-secondary w-screen h-screen p-8 ${IsOpen ? '-translate-x-1':'-translate-x-full'}
     ease-in-out duration-200 overflow-scroll
     }`}>
       <div className="flex py-4">
       <button className="flex justify-center items-center py-2" onClick={() => handlenavClick()}>
       <IoClose size={25}/>
-      <h2 className="flex items-center justify-center text-base text-red-600 font-semibold w-[220px]">Recent Categories</h2>
+      <h2 className="flex items-center justify-center text-base text-primary font-semibold w-[250px]">Shop by BRAND / CATEGORIES</h2>
       </button>
       </div>
 

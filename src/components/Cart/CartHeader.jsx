@@ -9,7 +9,6 @@ import {FiShoppingBag} from "react-icons/fi"
 /////cart not for productSlug.js
 const CartHeader = ({Cartdatahead}) => {
 
-  console.log(Cartdatahead)
   
   const [IsOpen, setIsOpen] = useState(false)
     

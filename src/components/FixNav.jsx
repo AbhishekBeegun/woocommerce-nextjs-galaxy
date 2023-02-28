@@ -4,6 +4,7 @@ import { useState } from "react";
 import {CgMenuLeftAlt} from "react-icons/cg"
 import{IoClose} from "react-icons/io5";
 import{AiOutlineUser} from "react-icons/ai"
+import {IoMdGitCompare} from "react-icons/io"
 
 
 
@@ -16,7 +17,6 @@ const FixNav = ({categorie}) => {
 
 
 
-
   return (
     <nav className="w-full flex justify-between items-center py-2 px-8 bg-secondary border-y">
        {IsOpen ? 
@@ -24,14 +24,23 @@ const FixNav = ({categorie}) => {
        <IoClose size={20} />
         </button>: 
        <div className="flex justify-between w-full text-sm">
-       <button className="flex gap-2 items-center"
+       <button className="flex gap-2 items-center justify-center"
         onClick={() => handlenavClick()}>
-        <CgMenuLeftAlt size={20} />
+        <CgMenuLeftAlt />
         Categories
        </button>
+         
+      <Link href="/COMPAREPAGE">
+       <a className="flex gap-1 items-center justify-center">
+        <IoMdGitCompare/>
+        <p>Compare</p>
+       </a>
+       </Link>
 
-       <button className="flex gap-1 items-center"><AiOutlineUser/> User</button>
+       <button className="flex gap-1 items-center justify-center"><AiOutlineUser/> User</button>
        </div>}
+    
+    {/* Categories */}
     <div className={`top-0 flex flex-col z-10 right-0 fixed bg-secondary w-screen h-screen p-8 ${IsOpen ? '-translate-x-1':'-translate-x-full'}
     ease-in-out duration-200 overflow-scroll
     }`}>
@@ -60,6 +69,15 @@ const FixNav = ({categorie}) => {
       </div>
 
     </div>
+
+
+
+
+
+
+ 
+
+   
 
     </nav>
   )

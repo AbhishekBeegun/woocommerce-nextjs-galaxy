@@ -92,6 +92,7 @@ export async function getStaticProps() {
             node {
               slug
               title
+              content
               image{
                 sourceUrl
               }

@@ -2,9 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+
+.compare ::-webkit-scrollbar{
+  display: block;
+}
+
 *::-webkit-scrollbar{
 display: none;
 }
+
+.item{
+  height: 30vh;
+}
+
+
 
 .theme-galaxy {
   --color-primary: #D82530;

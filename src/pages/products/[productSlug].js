@@ -40,6 +40,13 @@ export default function Products({ products, site }) {
 ///cart local storage
 
 
+///wishlist
+
+const handlewish =() =>{ 
+  setAddtowishlist(!Addtowishlist)
+  toast.error("Wishlist not available")
+}
+
   return (
     <>
     <Toaster/>
@@ -80,7 +87,7 @@ export default function Products({ products, site }) {
            {/* title and wishlist  */}
           <div className="flex justify-evenly items-center px-2">
            <h1 className="font-semibold text-xl shrink">{product.title}</h1>
-           <button 
+           <button onClick={() => handlewish()}
            className="text-primary">
             {!Addtowishlist ? <AiOutlineHeart size={25}/> : <AiFillHeart size={28}/> }
              
@@ -94,9 +101,7 @@ export default function Products({ products, site }) {
 
            {/* product description  */}
           <div className="flex justify-center text-primary">
-          <h3 dangerouslySetInnerHTML={{
-                      __html: product.content
-            }} className="text-xs text-center py-4 h-[10vh] overflow-scroll" />            
+          <h3 dangerouslySetInnerHTML={{__html: product.content}} className="text-xs text-center py-4 h-[10vh] overflow-scroll" />            
           </div>
 
           {/* Cimfinace */}

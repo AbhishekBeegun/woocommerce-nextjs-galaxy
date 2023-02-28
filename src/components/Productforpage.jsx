@@ -1,10 +1,35 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useState } from "react";
 import Link from "next/link";
 import CimFinance from "./CimFinance";
 import Saveonsale from "./Saveonsale";
-import Image from "next/image";
+import { Toaster,toast } from "react-hot-toast";
+import {IoMdGitCompare} from "react-icons/io"
+
+
 
 const Productforpage = ({products}) => {
+
+  const [compare, setcompare] = useState([]);
+      ///cart local storage
+      useEffect(() => {
+        const newCartData = JSON.parse(localStorage.getItem("compare-data"))
+        if (newCartData)
+            setcompare(newCartData)
+      }, [])
+    
+    ///check if there is data in localstorage then load localstorage with required data
+      useEffect(() => {
+        localStorage.setItem("compare-data", JSON.stringify(compare))
+        console.log("data saved")
+        console.log(compare)
+    }, [compare])
+    
+      const handleClick = (product) => {
+            setcompare([...compare,[product.title,product.image.sourceUrl,product.content,product.price]])
+            toast.success("Added to Compare") 
+        }
+
   return (
     <div className="">
         <main className="">
@@ -37,6 +62,17 @@ const Productforpage = ({products}) => {
                 <CimFinance price={product.price}/>
 
                 </div>
+                <div title="Compare" 
+                className="absolute top-5 left-2">
+                  <div className="bg-secondary p-1 rounded-lg flex items-center justify-center">
+                   <Toaster/>
+                   <button onClick={() => handleClick(product)}
+                    className="text-primary">
+                    <IoMdGitCompare size={25}/>
+                   </button>
+                  </div>
+                </div>
+
 
                 <div>
                 {product.onSale ?
@@ -44,6 +80,9 @@ const Productforpage = ({products}) => {
                   <Saveonsale regularPrice={product.regularPrice} salePrice={product.salePrice}/>
                   </div> : 
                  <div className="hidden"></div>}
+
+
+             
                 </div> 
 
 

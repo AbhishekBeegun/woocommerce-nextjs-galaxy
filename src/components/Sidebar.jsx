@@ -12,7 +12,6 @@ const Sidebar = () => {
 
   const [ThemeToggle,setThemeToggle] = useContext(ThemeContext);
 
-  console.log(ThemeToggle)
 
   
   const [IsOpen, setIsOpen] = useState(false)
@@ -69,8 +68,8 @@ const Sidebar = () => {
           <Link href="/DEALS">
             <a className="border-b py-2 px-4">Hot Deals **</a>
           </Link>
-          <Link href="/Err503">
-            <a className="border-b py-2 px-4">Wishlist</a>
+          <Link href="/COMPAREPAGE">
+            <a className="border-b py-2 px-4">Compare**</a>
           </Link>
           <Link href="/ISSUES">
             <a className="border-b py-2 px-4">Issues**</a>

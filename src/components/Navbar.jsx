@@ -18,6 +18,7 @@ const Navbar = ({categorie}) => {
 
   const [Cartdatahead, setCartdatahead] = useState([]);
 
+  //cart data
   useEffect(() => {
     const newCartData = JSON.parse(localStorage.getItem("cart-data"))
     if (newCartData)

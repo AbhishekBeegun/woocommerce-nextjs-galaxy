@@ -17,10 +17,10 @@ const Banner = () => {
       <img src="https://cdn.mos.cms.futurecdn.net/xz7tsxrUbTfFnXfiaUbZSL-480-80.jpg" />
       </div>,
       <div className="item" data-value="2">
-      <img src="https://www.euronics.co.uk/medias/lg-brand-page-hero-image?context=bWFzdGVyfGltYWdlc3w0NjQ5MTh8aW1hZ2UvanBlZ3xpbWFnZXMvaDM3L2hhMi84OTQxMDg5OTgwNDQ2LmpwZ3wyNGExNmRiYTk1NTI0NmZhYzk1ZTMzYmFmMDQwMTk4MTdkYWY2ZjUzMTI4YTVmYTY3NmY5N2E2YjQ0NzI3YjFi" />
+      <img src="http://wpnextecommerce.byethost10.com/wp-content/uploads/2023/03/Samsung_Galaxy_S23_Pre-Order_Banners-S23.webp" />
       </div>,
       <div className="item" data-value="3">
-      <img src="https://www.skyworth.net/content/dam/skyworth/global/about-us/BrandBanner_PC.jpg" />
+      <img src="http://wpnextecommerce.byethost10.com/wp-content/uploads/2023/03/VALENTINE_WEB_BANNER_P1-01.webp" />
       </div>,,
   ];
   return (

@@ -31,12 +31,12 @@ const Navbar = ({categorie}) => {
     <div className="flex items-center justify-between py-4 px-8">
     {ThemeToggle ? <Link href="/" className="z-10">
       <a>
-      <img src="http://localhost/galaxy/wp-content/uploads/2023/02/Galaxy_Logo-01.png" width="100px" alt="Galaxy logo" /> 
+      <img src="http://wpnextecommerce.byethost10.com/wp-content/uploads/2023/03/Galaxy_Logo-01.png" width="100px" alt="Galaxy logo" /> 
       </a>
     </Link>:
     <Link href="/" className="z-10">
     <a>
-    <img src="http://localhost/galaxy/wp-content/uploads/2023/02/361logo.png" width="50px" alt="361 logo" /> 
+    <img src="http://wpnextecommerce.byethost10.com/wp-content/uploads/2023/03/361logo.png" width="50px" alt="361 logo" /> 
     </a>
     </Link>}
     
